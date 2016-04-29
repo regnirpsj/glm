@@ -76,6 +76,11 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 ##### Deprecation:
 - Removed GLM_FORCE_SIZE_FUNC define
 
+#### [GLM 0.9.7.5](https://github.com/g-truc/glm/tree/0.9.7) - 2016-0X-XX
+##### Fixes:
+- Fixed uaddCarry warning #497
+- Fixed roundPowerOfTwo and floorPowerOfTwo #503
+
 #### [GLM 0.9.7.4](https://github.com/g-truc/glm/releases/tag/0.9.7.4) - 2016-03-19
 ##### Fixes:
 - Fixed asinh and atanh warning with C++98 STL #484
@@ -205,7 +210,7 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 ##### Fixes:
 - Fixed scalar uaddCarry build error with Cuda #276
 - Fixed C++11 explicit conversion operators detection #282
-- Fixed missing explicit convertion when using integer log2 with *vec1 types
+- Fixed missing explicit conversion when using integer log2 with *vec1 types
 - Fixed 64 bits integer GTX_string_cast to_string on VC 32 bit compiler
 - Fixed Android build issue, STL C++11 is not supported by the NDK #284
 - Fixed unsupported _BitScanForward64 and _BitScanReverse64 in VC10
@@ -526,7 +531,7 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 - Promoted GLM_GTC_noise extension: simplex, perlin, periodic noise functions
 - Promoted GLM_GTC_random extension: linear, gaussian and various random number 
 generation distribution
-- Added GLM_GTX_constants: provides usefull constants
+- Added GLM_GTX_constants: provides useful constants
 - Added extension versioning
 - Removed many unused namespaces
 - Fixed half based type contructors
