@@ -84,36 +84,6 @@ int test_compiler()
 	{
 		std::printf("GLM_COMPILER_CUDA\n");
 	}
-	else if(GLM_COMPILER & GLM_COMPILER_APPLE_CLANG)
-	{
-		switch(GLM_COMPILER)
-		{
-		case GLM_COMPILER_APPLE_CLANG40:
-			std::printf("GLM_COMPILER_APPLE_CLANG40\n");
-			break;
-		case GLM_COMPILER_APPLE_CLANG41:
-			std::printf("GLM_COMPILER_APPLE_CLANG41\n");
-			break;
-		case GLM_COMPILER_APPLE_CLANG42:
-			std::printf("GLM_COMPILER_APPLE_CLANG42\n");
-			break;
-		case GLM_COMPILER_APPLE_CLANG50:
-			std::printf("GLM_COMPILER_APPLE_CLANG50\n");
-			break;
-		case GLM_COMPILER_APPLE_CLANG51:
-			std::printf("GLM_COMPILER_APPLE_CLANG51\n");
-			break;
-		case GLM_COMPILER_APPLE_CLANG60:
-			std::printf("GLM_COMPILER_APPLE_CLANG60\n");	
-			break;
-		case GLM_COMPILER_APPLE_CLANG61:
-			std::printf("GLM_COMPILER_APPLE_CLANG61\n");	
-			break;
-		default:
-			std::printf("Apple Clang version not detected\n");
-			break;
-		}
-	}
 	else if(GLM_COMPILER & GLM_COMPILER_LLVM)
 	{
 		switch(GLM_COMPILER)
@@ -226,7 +196,7 @@ int test_instruction_set()
 
 int test_cpp_version()
 {
-	std::printf("__cplusplus: %ld\n", __cplusplus);
+	std::printf("__cplusplus: %lld\n", __cplusplus);
 	
 	return 0;
 }

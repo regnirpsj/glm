@@ -59,7 +59,6 @@ enum comp
 //	return _mm_shuffle_ps(Src, Src, mask<(int(W) << 6) | (int(Z) << 4) | (int(Y) << 2) | (int(X) << 0)>::value);
 //}
 
-
 int test_vec4_ctor()
 {
 	int Error = 0;
@@ -99,7 +98,7 @@ int test_vec4_ctor()
 	}
 #endif
 
-#if GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)
+#if GLM_HAS_UNRESTRICTED_UNIONS && defined(GLM_SWIZZLE)
 	{
 		glm::vec4 A = glm::vec4(1.0f, 2.0f, 3.0f, 4.0f);
 		glm::vec4 B = A.xyzw;
@@ -128,7 +127,7 @@ int test_vec4_ctor()
 		Error += glm::all(glm::equal(A, L)) ? 0 : 1;
 		Error += glm::all(glm::equal(A, M)) ? 0 : 1;
 	}
-#endif// GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE)
+#endif// GLM_HAS_UNRESTRICTED_UNIONS && defined(GLM_SWIZZLE)
 
 	{
 		glm::vec4 A(1);
@@ -335,7 +334,7 @@ int test_vec4_swizzle_partial()
 
 	glm::vec4 A(1, 2, 3, 4);
 
-#	if GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE_RELAX)
+#	if GLM_HAS_UNRESTRICTED_UNIONS && defined(GLM_SWIZZLE_RELAX)
 	{
 		glm::vec4 B(A.xy, A.zw);
 		Error += A == B ? 0 : 1;
@@ -485,6 +484,21 @@ namespace heap
 	}
 }//namespace heap
 
+int test_vec4_simd()
+{
+	int Error = 0;
+
+	glm::tvec4<float, glm::simd> a(std::clock(), std::clock(), std::clock(), std::clock());
+	glm::tvec4<float, glm::simd> b(std::clock(), std::clock(), std::clock(), std::clock());
+
+	glm::tvec4<float, glm::simd> c(b * a);
+	glm::tvec4<float, glm::simd> d(a + c);
+
+	Error += glm::all(glm::greaterThanEqual(d, glm::tvec4<float, glm::simd>(0))) ? 0 : 1;
+
+	return Error;
+}
+
 int main()
 {
 	int Error(0);
@@ -503,6 +517,7 @@ int main()
 	Error += test_vec4_size();
 	Error += test_vec4_operators();
 	Error += test_vec4_swizzle_partial();
+	Error += test_vec4_simd();
 	Error += test_operator_increment();
 	Error += heap::test();
 

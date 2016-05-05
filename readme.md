@@ -67,6 +67,7 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 - Improved GTC_random linearRand documentation
 - Improved GTC_reciprocal documentation
 - Improved GLM_FORCE_EXPLICIT_CTOR coverage #481
+- Improved OpenMP support detection for Clang, GCC, ICC and VC
 
 ##### Fixes:
 - Fixed GTX_extended_min_max filename typo #386
@@ -80,6 +81,7 @@ glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
 ##### Fixes:
 - Fixed uaddCarry warning #497
 - Fixed roundPowerOfTwo and floorPowerOfTwo #503
+- Fixed Visual C++ SIMD instruction set automatic detection in 64 bits
 
 #### [GLM 0.9.7.4](https://github.com/g-truc/glm/releases/tag/0.9.7.4) - 2016-03-19
 ##### Fixes:
